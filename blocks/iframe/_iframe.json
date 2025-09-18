@@ -1,0 +1,36 @@
+{
+    "title": "Iframe",
+    "description": "Embeds an iframe with configurable source and dimensions.",
+    "fields": [
+        {
+            "name": "src",
+            "label": "Source URL",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "title",
+            "label": "Title",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "width",
+            "label": "Width",
+            "type": "text",
+            "default": "100%"
+        },
+        {
+            "name": "height",
+            "label": "Height",
+            "type": "text",
+            "default": "400px"
+        },
+        {
+            "name": "allowfullscreen",
+            "label": "Allow Fullscreen",
+            "type": "boolean",
+            "default": true
+        }
+    ]
+}

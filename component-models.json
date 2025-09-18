@@ -214,5 +214,40 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "iframe",
+    "fields": [
+      {
+        "component": "text",
+        "name": "src",
+        "label": "Source URL",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "width",
+        "label": "Width",
+        "value": "100%"
+      },
+      {
+        "component": "text",
+        "name": "height",
+        "label": "Height",
+        "value": "400px"
+      },
+      {
+        "component": "checkbox",
+        "name": "allowfullscreen",
+        "label": "Allow Fullscreen",
+        "value": true
+      }
+    ]
   }
 ]

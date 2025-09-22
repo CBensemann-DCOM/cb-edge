@@ -241,12 +241,6 @@
         "name": "height",
         "label": "Height",
         "value": "400px"
-      },
-      {
-        "component": "checkbox",
-        "name": "allowfullscreen",
-        "label": "Allow Fullscreen",
-        "value": true
       }
     ]
   }

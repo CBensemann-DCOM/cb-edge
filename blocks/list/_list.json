@@ -1,0 +1,45 @@
+{
+    "title": "EDS List",
+    "description": "Displays a list of pages. Select pages manually or show children of a specific page.",
+    "fields": [
+        {
+            "name": "mode",
+            "label": "List Mode",
+            "type": "select",
+            "options": [
+                {
+                    "name": "Manual",
+                    "value": "manual"
+                },
+                {
+                    "name": "Children of Page",
+                    "value": "children"
+                }
+            ],
+            "default": "manual"
+        },
+        {
+            "name": "pages",
+            "label": "Pages",
+            "type": "reference",
+            "multi": true,
+            "visibleIf": {
+                "mode": "manual"
+            }
+        },
+        {
+            "name": "parentPage",
+            "label": "Parent Page",
+            "type": "reference",
+            "visibleIf": {
+                "mode": "children"
+            }
+        },
+        {
+            "name": "showProperties",
+            "label": "Show Page Properties",
+            "type": "checkbox",
+            "default": true
+        }
+    ]
+}

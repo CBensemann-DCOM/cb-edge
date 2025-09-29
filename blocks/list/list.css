@@ -1,0 +1,19 @@
+.eds-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.eds-list-item {
+  margin-bottom: 1em;
+}
+.eds-list-item a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #0055b3;
+}
+.eds-list-desc {
+  display: block;
+  color: #666;
+  font-size: 0.95em;
+  margin-top: 0.2em;
+}

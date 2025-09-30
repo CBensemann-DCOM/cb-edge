@@ -1,0 +1,63 @@
+{
+  "definitions": [
+    {
+      "title": "List",
+      "id": "list",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "List",
+              "model": "list"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "list",
+      "fields": [
+        {
+          "component": "select",
+          "name": "mode",
+          "label": "List Mode",
+          "options": [
+            {
+              "name": "Manual",
+              "value": "manual"
+            },
+            {
+              "name": "Children of Page",
+              "value": "children"
+            }
+          ]
+        },
+        {
+          "component": "aem-content",
+          "name": "pages",
+          "label": "Pages",
+          "multi": true,
+          "visibleIf": {
+            "mode": "manual"
+          }
+        },
+        {
+          "component": "aem-content",
+          "name": "parentPage",
+          "label": "Parent Page",
+          "visibleIf": {
+            "mode": "children"
+          }
+        },
+        {
+          "component": "aem-content",
+          "name": "reference",
+          "label": "Reference"
+        }
+      ]
+    }
+  ]
+}

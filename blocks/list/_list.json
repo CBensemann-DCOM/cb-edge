@@ -21,7 +21,7 @@
         {
             "name": "pages",
             "label": "Pages",
-            "type": "reference",
+            "type": "aem-content",
             "multi": true,
             "visibleIf": {
                 "mode": "manual"
@@ -30,7 +30,7 @@
         {
             "name": "parentPage",
             "label": "Parent Page",
-            "type": "reference",
+            "type": "aem-content",
             "visibleIf": {
                 "mode": "children"
             }

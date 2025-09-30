@@ -36,7 +36,7 @@
           ]
         },
         {
-          "component": "reference",
+          "component": "aem-content",
           "name": "pages",
           "label": "Pages",
           "multi": true,
@@ -45,7 +45,7 @@
           }
         },
         {
-          "component": "reference",
+          "component": "aem-content",
           "name": "parentPage",
           "label": "Parent Page",
           "visibleIf": {

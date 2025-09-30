@@ -4,7 +4,7 @@ export async function getPageProperties(pageUrl) {
   return {
     title: 'Page Title',
     description: 'Page Description',
-    pageUrl
+    pageUrl,
   };
 }
 
@@ -13,6 +13,6 @@ export async function getChildrenPages(parentUrl) {
   // Example stub:
   return [
     `${parentUrl}/child1`,
-    `${parentUrl}/child2`
+    `${parentUrl}/child2`,
   ];
 }

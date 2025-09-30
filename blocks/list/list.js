@@ -1,36 +1,51 @@
 import { getPageProperties, getChildrenPages } from '../../utils/page-utils.js';
 
-export default async function decorate(block) {
-  // Read config from dataset or block model
+export default function decorate(block) {
   const config = block.dataset || {};
   const mode = config.mode || 'manual';
   const showProperties = config.showProperties !== 'false';
 
-  let pages = [];
+  let pagesPromise;
   if (mode === 'manual' && config.pages) {
     try {
-      pages = JSON.parse(config.pages);
+      const parsed = JSON.parse(config.pages);
+      pagesPromise = Promise.resolve(parsed);
     } catch {
-      pages = Array.isArray(config.pages) ? config.pages : [];
+      pagesPromise = Promise.resolve(Array.isArray(config.pages) ? config.pages : []);
     }
   } else if (mode === 'children' && config.parentPage) {
-    pages = await getChildrenPages(config.parentPage);
+    pagesPromise = getChildrenPages(config.parentPage);
+  } else {
+    pagesPromise = Promise.resolve([]);
   }
 
-  block.innerHTML = '';
-  const ul = document.createElement('ul');
-  ul.className = 'eds-list';
+  pagesPromise.then((pages) => {
+    block.innerHTML = '';
+    const ul = document.createElement('ul');
+    ul.className = 'eds-list';
 
-  for (const page of pages) {
-    const li = document.createElement('li');
-    li.className = 'eds-list-item';
-    const props = showProperties ? await getPageProperties(page) : {};
-    li.innerHTML = `
-      <a href="${page}">${props.title || page}</a>
-      ${showProperties ? `<span class="eds-list-desc">${props.description || ''}</span>` : ''}
-    `;
-    ul.appendChild(li);
-  }
-
-  block.appendChild(ul);
+    if (showProperties) {
+      Promise.all(pages.map((page) => getPageProperties(page))).then((propsArr) => {
+        pages.forEach((page, i) => {
+          const li = document.createElement('li');
+          li.className = 'eds-list-item';
+          const props = propsArr[i] || {};
+          li.innerHTML = `
+            <a href="${page}">${props.title || page}</a>
+            <span class="eds-list-desc">${props.description || ''}</span>
+          `;
+          ul.appendChild(li);
+        });
+        block.appendChild(ul);
+      });
+    } else {
+      pages.forEach((page) => {
+        const li = document.createElement('li');
+        li.className = 'eds-list-item';
+        li.innerHTML = `<a href="${page}">${page}</a>`;
+        ul.appendChild(li);
+      });
+      block.appendChild(ul);
+    }
+  });
 }
